@@ -122,20 +122,20 @@ The project is organized into two main directories: `BE` (backend) and `frontend
 ```
 BE/
 ├── config/
-│ └── Db.js # Sequelize database connection configuration
+│ └── Db.js                  # Sequelize database connection configuration
 ├── controller/
-│ └── userController.js # Handles the logic for user-related requests
+│ └── userController.js      # Handles the logic for user-related requests
 ├── middleware/
-│ ├── errorHandler.js # Custom error handling middleware
-│ ├── logger.js # Middleware for logging requests
-│ └── notFound.js # Middleware for handling 404 Not Found errors
+│ ├── errorHandler.js        # Custom error handling middleware
+│ ├── logger.js              # Middleware for logging requests
+│ └── notFound.js            # Middleware for handling 404 Not Found errors
 ├── model/
-│ └── User.js # Sequelize model for the User
+│ └── User.js                # Sequelize model for the User
 ├── routes/
-│ └── routes.js # Defines the API routes
-├── .env # Environment variables (needs to be created)
-├── app.js # Main application file
-└── package.json # Project dependencies and scripts
+│ └── routes.js              # Defines the API routes
+├── .env                     # Environment variables (needs to be created)
+├── app.js                   # Main application file
+└── package.json             # Project dependencies and scripts
 ```
 
 ### Frontend (`frontend/`)
@@ -143,20 +143,20 @@ BE/
 ```
 frontend/
 ├── pages/
-│ ├── CreateUser.jsx # Component for the add user form
-│ ├── EditUser.jsx # Component for the edit user form
-│ ├── Home.jsx # Main page displaying the list of users
-│ └── UserDetails.jsx # Component to display single user details
+│ ├── CreateUser.jsx         # Component for the add user form
+│ ├── EditUser.jsx           # Component for the edit user form
+│ ├── Home.jsx               # Main page displaying the list of users
+│ └── UserDetails.jsx        # Component to display single user details
 ├── services/
-│ └── api.js # Axios instance for API communication
+│ └── api.js                 # Axios instance for API communication
 ├── src/
-│ ├── App.css # Main application styling
-│ ├── App.jsx # Main application component with routing
-│ ├── index.css # Global styling
-│ └── main.jsx # Application entry point
-├── index.html # Main HTML file
-├── package.json # Project dependencies and scripts
-└── vite.config.js # Vite configuration file
+│ ├── App.css                # Main application styling
+│ ├── App.jsx                # Main application component with routing
+│ ├── index.css              # Global styling
+│ └── main.jsx               # Application entry point
+├── index.html               # Main HTML file
+├── package.json             # Project dependencies and scripts
+└── vite.config.js           # Vite configuration file
 ```
 
 ---
