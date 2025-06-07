@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api';
 
-function CreateUser() {
+function EditUser() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -13,6 +14,17 @@ function CreateUser() {
     phoneNumber: '',
   });
 
+  useEffect(() => {
+    api
+      .get(`/users/${id}`)
+      .then((response) => {
+        setFormData(response.data.data);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user data:', error);
+      });
+  }, [id]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -20,23 +32,23 @@ function CreateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     api
-      .post('/users', formData)
+      .put(`/users/${id}`, formData)
       .then(() => {
-        navigate('/');
+        navigate('/'); 
       })
       .catch((error) => {
-        console.error('Gagal tambah data:', error);
+        console.error('Failed to update data:', error);
       });
   };
 
   return (
     <div className="form-container">
-      <h1>Add New User</h1>
+      <h1>Edit User</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Nama"
           value={formData.name}
           onChange={handleChange}
           required
@@ -62,7 +74,7 @@ function CreateUser() {
         <input
           type="number"
           name="age"
-          placeholder="Age"
+          placeholder="Umur"
           value={formData.age}
           onChange={handleChange}
           required
@@ -70,21 +82,20 @@ function CreateUser() {
         <input
           type="text"
           name="address"
-          placeholder="Address"
+          placeholder="Alamat"
           value={formData.address}
           onChange={handleChange}
-          required
         />
         <input
-          type="number"
+          type="text"
           name="phoneNumber"
-          placeholder="Phone Number"
+          placeholder="Telepon"
           value={formData.phoneNumber}
           onChange={handleChange}
         />
         <div className="form-actions">
           <button type="submit" className="btn btn-primary">
-            Save
+            Update
           </button>
           <button
             type="button"
@@ -99,4 +110,4 @@ function CreateUser() {
   );
 }
 
-export default CreateUser;
+export default EditUser;
